@@ -64,8 +64,10 @@ function predict() {
 		load(dictionary.UPLOADING_FILES);
 		uploadContainer.generateAsync({ type : "blob" }).then(function (blob) {
 
-			var formData = new FormData();
-			formData.append('userfile', blob,"files.zip");
+			ws.send(blob);
+
+			/*var formData = new FormData();
+			formData.append('userfile', blob, "files.zip");
 
 			$.ajax({
 
@@ -93,7 +95,7 @@ function predict() {
 						alert(dictionary.UNHANDLED_ERROR + message[1]);
 					}
 				}
-			});
+			});*/
 		});
 	}
 	else {

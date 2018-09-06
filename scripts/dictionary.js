@@ -9,8 +9,10 @@ var dictionary = {
 	NO_FILES_SELECTED : "No se han seleccionado archivos",
 	TRYING_TO_RECONNECT : "Intentando reconectar...",
 	WAITING_FOR_PREDICTION : "Esperando predicción...",
-	PROCESSING_PREDICTOR_RESPONSE : "Procesando predicción...",
+	PROCESSING_PREDICTOR_RESPONSE : "Procesando resultado...",
 	WAITING_FOR_PREDICTOR_TO_BE_READY : "Esperando que el predictor inicie...", 
-	WAITING_FOR_PREDICTOR_RECONECTION : "Esperando reconexion del predictor..."
+	WAITING_FOR_PREDICTOR_RECONECTION : "Esperando reconexion del predictor...",
+	PREDICTOR_CANCELED_THE_REQUEST : "El predictor ha cancelado la consulta",
+	PREDICTOR_IS_PROCESING_REQUEST : "Realizando predicción..."
 }
 

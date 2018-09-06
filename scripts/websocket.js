@@ -1,11 +1,6 @@
 
 var ws;
 
-var onopen = function () {
-
-	haveLoadedAtLeastOnce = true;
-};
-
 var onmessage = function(e) {
 
 	var message = e.data.split(";");
@@ -16,22 +11,38 @@ var onmessage = function(e) {
 	}
 	else if ( message[0] == "status" ) {
 
-		if ( message[1] == "ready" ) {
+		switch ( message[1] ) {
 
-			reset();
-			unload();
-		}
-		else if ( message[1] == "waiting" ) {
+			case "ready":
 
-			load(dictionary.WAITING_FOR_PREDICTOR_TO_BE_READY);
-		}
-		else if ( message[1] == "shutdown" ) {
+				reset();
+				unload();
+				break;
 
-			load(dictionary.WAITING_FOR_PREDICTOR_RECONECTION);
-		}
-		else {
-			alert(dictionary.UNHANDLED_ERROR + message[1]);
-			load(dictionary.LOADING);
+			case "canceled":
+
+				alert(dictionary.PREDICTOR_CANCELED_THE_REQUEST);
+				unload();
+				break;
+
+			case "procesing":
+
+				load(dictionary.PREDICTOR_IS_PROCESING_REQUEST);
+				break;
+
+			case "waiting":
+
+				load(dictionary.WAITING_FOR_PREDICTOR_TO_BE_READY);
+				break;
+
+			case "shutdown":
+
+				load(dictionary.WAITING_FOR_PREDICTOR_RECONECTION);
+				break;
+			default:
+
+				alert(dictionary.UNHANDLED_ERROR + message[1]);
+				load(dictionary.LOADING);
 		}
 	}
 	else if ( message[0] == "result" ) {
@@ -92,7 +103,7 @@ var onmessage = function(e) {
 	}
 };
 
-var onclose = function(){
+/*var onclose = function(){
 
 	if ( haveLoadedAtLeastOnce ) {
 
@@ -111,11 +122,15 @@ var reconnect = function () {
 	ws.onmessage = onmessage;
 	ws.onclose = onclose;
 
-	//FIXME
 	console.log("Intentando reconectar... try: " + reconnectCount++);
 }
 
+var onopen = function () {
+
+	haveLoadedAtLeastOnce = true;
+};*/
+
 ws = new WebSocket(websocketURL);
-ws.onclose = onclose;
-ws.onopen = onopen;
+//ws.onclose = onclose;
+//ws.onopen = onopen;
 ws.onmessage = onmessage;
