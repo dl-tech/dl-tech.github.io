@@ -1,1 +1,1 @@
-# deeplab-tech.github.io
+# dl-tech.github.io
