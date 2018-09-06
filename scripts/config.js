@@ -1,3 +1,3 @@
 
-var websocketURL = "ws://nightroad.ddns.net/deeplab-websocket";
+var websocketURL = "wss://nightroad.ddns.net/deeplab-websocket/";
 var webserviceURL = '/deeplab/webservice/';
