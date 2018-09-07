@@ -165,13 +165,15 @@ var onmessage = function(e) {
 
 var onclose = function(){
 
-    var sumbmessage = "";
+    var submessage = "";
 
-    sumbmessage += "Puede que usted se quedara sin internet (se cayo o no lo pago quizas)<br>";
-    sumbmessage += "Tambien puede que el servidor donde se encuentra el predictor explotara, nunca se sabe<br>";
-    sumbmessage += "Si quiere puede intentar comunicarse con los simios del departamento de IT, pero dudo que lo quieran ayudar.";
+    submessage += "Puede que usted se quedara <b>sin internet</b> (un camión choco un poste o quizas no pago la cuenta)<br>";
+    submessage += "Tambien puede que el <b>servidor</b> donde se encuentra alojado el predictor <b>explotara</b>, nunca se sabe...<br>";
+    submessage += "Si quiere puede intentar comunicarse con los <b>simios</b> del departamento";
+    submessage += " de <a href=\"https://en.wikipedia.org/wiki/Information_technology\">IT</a>, pero dudo que lo quieran ayudar.";
+    submessage += "<br><br>Vuelva a intentarlo más tarde.";
 
-	dialog("No hay conexion con el servidor.", submessage)
+	dialog("No hay conexión con el servidor.", submessage)
 };
 
 /*

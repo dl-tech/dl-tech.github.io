@@ -33,26 +33,6 @@ body {
     display: inline-block;
 }
 
-#main {
-
-    display: none;
-
-    vertical-align: top;
-
-    height: 100%;
-}
-
-#login {
-
-	display: none;
-
-	text-align: center;
-	cursor: default;
-
-    vertical-align: top;
-    padding-top: 60px;
-}
-
 #login input {
 
     width: 200px;
@@ -69,6 +49,8 @@ body {
 }
 
 #login .logo {
+
+    margin-top: 60px;
 
     background-image: url("../images/logo.png");
     background-size: 100% auto;
@@ -97,6 +79,7 @@ body {
 
 	text-align: center;
 	cursor: default;
+    vertical-align: top;
 }
 
 #dialog-sub-message {
@@ -110,14 +93,19 @@ body {
 	font-size: 48px;
 }
 
-#dialog {
+#main {
 
-	display: none;
-
-	text-align: center;
-	cursor: default;
+    height: inherit;
 }
 
+.pepsi {
+
+	display: inline-block;
+    vertical-align: top;
+	text-align: center;
+	cursor: default;
+    width: 100%;
+}
 
 #process {
 
