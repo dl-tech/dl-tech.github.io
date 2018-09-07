@@ -192,7 +192,7 @@ previewNextImage = function (previewIndex, startAt) {
 
 		b = new FileReader();
 
-		uploadContainer.file("files/"+previewIndex+".jpg", selectedFiles[previewIndex]);
+		//uploadContainer.file("files/"+previewIndex+".jpg", selectedFiles[previewIndex]);
 
 		if ( previewIndex < 256 || (previewIndex%128) !== 0 ) {
 
@@ -201,8 +201,7 @@ previewNextImage = function (previewIndex, startAt) {
 				previewNode = previewNode.cloneNode(true);
                 previewNode.firstChild.onload = function () {
 
-                    console.log("Vanilla Ice");
-                    console.log( resize(this) );
+                    uploadContainer.file("files/"+previewIndex+".jpg", resize(this).replace(/^data:image\/(png|jpg);base64,/, ""), {base64: true});
                 }
 				previewNode.firstChild.setAttribute("src", e.target.result);
 				previewNode.lastChild.firstChild.innerHTML = selectedFiles[previewIndex].name;
@@ -221,8 +220,7 @@ previewNextImage = function (previewIndex, startAt) {
 				previewNode = previewNode.cloneNode(true);
                 previewNode.firstChild.onload = function () {
 
-                    console.log("Vanilla Ice");
-                    console.log( resize(this) );
+                    uploadContainer.file("files/"+previewIndex+".jpg", resize(this).replace(/^data:image\/(png|jpg);base64,/, ""), {base64: true});
                 }
 				previewNode.firstChild.setAttribute("src", e.target.result);
 				previewNode.lastChild.firstChild.innerHTML = selectedFiles[previewIndex].name;
