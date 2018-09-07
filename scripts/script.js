@@ -42,7 +42,7 @@ function session() {
 
 function sessioncheck(status) {
 
-    var token = getCookie("token");
+    token = getCookie("token");
 
     if ( token == "" ) {
 
