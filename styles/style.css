@@ -28,6 +28,11 @@ body {
     text-align: right;
 }
 
+#navbar button {
+
+    display: inline-block;
+}
+
 #main {
 
     display: none;
