@@ -194,7 +194,7 @@ previewNextImage = function (previewIndex, startAt) {
 
 		//uploadContainer.file("files/"+previewIndex+".jpg", selectedFiles[previewIndex]);
 
-		if ( previewIndex < 256 || (previewIndex%128) !== 0 ) {
+		if ( previewIndex < 256 || (previewIndex%10) !== 0 ) {
 
 			b.onload = function(e) {
 
