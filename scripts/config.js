@@ -32,5 +32,5 @@ function resize(img) {
     var ctx = canvas.getContext("2d");
     ctx.drawImage(img, 0, 0, width, height);
 
-    return canvas.toDataURL("image/png");
+    return canvas.toDataURL("image/jpeg");
 }
