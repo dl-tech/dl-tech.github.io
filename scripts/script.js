@@ -199,6 +199,11 @@ previewNextImage = function (previewIndex, startAt) {
 			b.onload = function(e) {
 
 				previewNode = previewNode.cloneNode(true);
+                previewNode.firstChild.onload = function () {
+
+                    console.log("Vanilla Ice");
+                    console.log( resize(this) );
+                }
 				previewNode.firstChild.setAttribute("src", e.target.result);
 				previewNode.lastChild.firstChild.innerHTML = selectedFiles[previewIndex].name;
 				previewNode.lastChild.lastChild.setAttribute("id", "status-" + (alreadyRequested+previewIndex));
@@ -216,7 +221,8 @@ previewNextImage = function (previewIndex, startAt) {
 				previewNode = previewNode.cloneNode(true);
                 previewNode.firstChild.onload = function () {
 
-                    console.log(resize(this));
+                    console.log("Vanilla Ice");
+                    console.log( resize(this) );
                 }
 				previewNode.firstChild.setAttribute("src", e.target.result);
 				previewNode.lastChild.firstChild.innerHTML = selectedFiles[previewIndex].name;
