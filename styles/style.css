@@ -131,6 +131,9 @@ body {
 	width: calc(100% - 382px);
 	height: calc(100% - 132px);
 
+    min-height: 300px;
+    min-width: 400px;
+
 	margin: 60px;
 	margin-right: 30px;
 

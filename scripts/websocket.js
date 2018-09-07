@@ -67,6 +67,11 @@ var onmessage = function(e) {
 				unload();
 				break;
 
+			case "uploading":
+
+				load("Procesando archivos...");
+				break;
+
 			case "canceled":
 
 				alert(dictionary.PREDICTOR_CANCELED_THE_REQUEST);
