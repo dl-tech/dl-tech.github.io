@@ -50,6 +50,7 @@ var onmessage = function(e) {
         if ( message[1] == "start" || message[1] == "waiting" ) {
 
             sessioncheck(message[1]);
+            return;
         }
         else if ( token == "" ) {
 
