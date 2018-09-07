@@ -3,6 +3,8 @@ var websocketURL = "wss://demonicgateway.ddns.net/ws-dltech/";
 
 function resize(img) {
 
+    var canvas = document.createElement("canvas");
+
     var ctx = canvas.getContext("2d");
     ctx.drawImage(img, 0, 0);
 
