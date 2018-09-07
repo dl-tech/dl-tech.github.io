@@ -25,6 +25,7 @@ body {
 	background-color: #24292e;
 
 	cursor: default;
+    text-align: right;
 }
 
 #main {
