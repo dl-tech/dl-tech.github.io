@@ -29,6 +29,8 @@ body {
 
 #main {
 
+    display: none;
+
     vertical-align: top;
 }
 
@@ -111,15 +113,11 @@ body {
 
 #process {
 
-	display: none;
-
 	text-align: center;
 	cursor: default;
 }
 
 #content {
-
-	display: none;
 
 	height: calc(100% - 60px);
 	text-align: center;
