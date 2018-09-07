@@ -216,7 +216,7 @@ previewNextImage = function (previewIndex, startAt) {
 				previewNode = previewNode.cloneNode(true);
                 previewNode.firstChild.onload = function () {
 
-                    console.log(resize(this););
+                    console.log(resize(this));
                 }
 				previewNode.firstChild.setAttribute("src", e.target.result);
 				previewNode.lastChild.firstChild.innerHTML = selectedFiles[previewIndex].name;
