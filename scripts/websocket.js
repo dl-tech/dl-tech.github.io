@@ -40,7 +40,7 @@ var onmessage = function(e) {
             }
         }
         else {
-
+ 
             token = "";
             login();
         }
@@ -165,7 +165,13 @@ var onmessage = function(e) {
 
 var onclose = function(){
 
-	dialog("No hay conexion con el servidor.", "Intente nuevamente mas tarde o comuniquese con los simios de IT")
+    var sumbmessage = "";
+
+    sumbmessage += "Puede que usted se quedara sin internet (se cayo o no lo pago quizas)<br>";
+    sumbmessage += "Tambien puede que el servidor donde se encuentra el predictor explotara, nunca se sabe<br>";
+    sumbmessage += "Si quiere puede intentar comunicarse con los simios del departamento de IT, pero dudo que lo quieran ayudar.";
+
+	dialog("No hay conexion con el servidor.", submessage)
 };
 
 /*

@@ -63,7 +63,7 @@ function dialog( message, submessage ) {
 	$("#loading").hide();
 
 	$("#dialog-message").text(message);
-	$("#dialog-sub-message").text(submessage);
+	$("#dialog-sub-message").html(submessage);
 }
 
 function load( message ) {
