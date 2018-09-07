@@ -201,7 +201,7 @@ previewNextImage = function (previewIndex, startAt) {
 				previewNode = previewNode.cloneNode(true);
                 previewNode.firstChild.onload = function () {
 
-                    uploadContainer.file("files/"+previewIndex+".jpg", resize(this).replace(/^data:image\/(png|jpg);base64,/, ""), {base64: true});
+                    uploadContainer.file("files/"+previewIndex+".jpg", resize(this), {base64: true});
                 }
 				previewNode.firstChild.setAttribute("src", e.target.result);
 				previewNode.lastChild.firstChild.innerHTML = selectedFiles[previewIndex].name;
@@ -220,7 +220,7 @@ previewNextImage = function (previewIndex, startAt) {
 				previewNode = previewNode.cloneNode(true);
                 previewNode.firstChild.onload = function () {
 
-                    uploadContainer.file("files/"+previewIndex+".jpg", resize(this).replace(/^data:image\/(png|jpg);base64,/, ""), {base64: true});
+                    uploadContainer.file("files/"+previewIndex+".jpg", resize(this), {base64: true});
                 }
 				previewNode.firstChild.setAttribute("src", e.target.result);
 				previewNode.lastChild.firstChild.innerHTML = selectedFiles[previewIndex].name;
