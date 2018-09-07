@@ -19,6 +19,14 @@ function login() {
 	$("#loading").hide();
 }
 
+function logout() {
+
+    token = "";
+    setCookie("token", "");
+
+    login();
+}
+
 function session() {
 
     var user = $("#user");
