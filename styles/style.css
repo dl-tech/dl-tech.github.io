@@ -32,6 +32,8 @@ body {
     display: none;
 
     vertical-align: top;
+
+    height: 100%;
 }
 
 #login {
