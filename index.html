@@ -7,55 +7,76 @@
 	<link rel="stylesheet" href="styles/spinner.css"/>
 	<link rel="stylesheet" href="styles/style.css"/>
 
-</head><body>
+</head><body><!--
 
-<div id="navbar"></div>
+--><div id="dialog">
 
-<div id="process">
+	        <div id="dialog-message" class="load-message">Buenos dias</div>
+	        <br>
+	        <div id="dialog-sub-message">buenas tardes</div>
+     </div><!--
 
-	<div id="upload-message" class="load-message">Conectando...</div>
-	<br>
-	<div class="progress"><span id="progress-val">0%</span><span id="progress-bar"><span id="progress-in" style="width: 0%"></span></span></div>
-</div>
+--><div id="loading">
 
-<div id="loading">
+	    <div id="load-message" class="load-message">Conectando...</div>
+	    <br>
+	    <div class="load"><hr/><hr/><hr/><hr/></div>
+    </div><!--
 
-	<div id="load-message" class="load-message">Conectando...</div>
-	<br>
-	<div class="load"><hr/><hr/><hr/><hr/></div>
-</div>
+--><div id="login">
 
-<div id="content">
+        <div class="logo"></div>
 
-	<div id="gallery"></div>
+        <div class="field"><span>Usuario:</span><input type="text" id="user"></div>
+        <div class="field"><span>Clave:</span><input type="password" id="pass"></div>
 
-	<div id="sidebar">
+        <div class="submit"><button onclick="session()">Iniciar Sesión</button></div><!--
 
-		<div id="stats">
+--></div><!--
 
-			<div><span class="tit">Sin Consultar:</span><span class="count" id="count-new">0</span></div>
-			<div><span class="tit">Consultados:</span><span class="count" id="count-total">0</span></div>
-			<br>
-			<div><span class="tit">Reactivos:</span><span class="count" id="count-reactivo">0</span></div>
-			<div><span class="tit">No Reactivos:</span><span class="count" id="count-noreactivo">0</span></div>
-		</div>
+--><div id="main"><!--
+    --><div id="navbar"></div><!--
+    --><!--
 
-		<div id="controls">
+--><div id="process">
 
-			<button>Agregar imagenes</button>
-			<input type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
-			<button id="button-reset" onclick="reset()">Quitar todo</button>
-			<br>
-			<button id="button-predict" onclick="predict()">Obtener Prediccion</button>
-		</div>
-	</div>
-</div>
+	    <div id="upload-message" class="load-message">Conectando...</div>
+	    <br>
+	    <div class="progress"><span id="progress-val">0%</span><span id="progress-bar"><span id="progress-in" style="width: 0%"></span></span></div>
+    </div><!--
 
-<script src="scripts/jquery-3.3.1.min.js"></script>
-<script src="scripts/jszip.min.js"></script>
-<script src="scripts/dictionary.js"></script>
-<script src="scripts/config.js"></script>
-<script src="scripts/script.js"></script>
-<script src="scripts/websocket.js"></script>
+--><div id="content">
 
-</body></html>
+	    <div id="gallery"></div>
+
+	    <div id="sidebar">
+
+		    <div id="stats">
+
+			    <div><span class="tit">Sin Consultar:</span><span class="count" id="count-new">0</span></div>
+			    <div><span class="tit">Consultados:</span><span class="count" id="count-total">0</span></div>
+			    <br>
+			    <div><span class="tit">Reactivos:</span><span class="count" id="count-reactivo">0</span></div>
+			    <div><span class="tit">No Reactivos:</span><span class="count" id="count-noreactivo">0</span></div>
+		    </div>
+
+		    <div id="controls">
+
+			    <button>Agregar imagenes</button>
+			    <input type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
+			    <button id="button-reset" onclick="reset()">Quitar todo</button>
+			    <br>
+			    <button id="button-predict" onclick="predict()">Obtener Prediccion</button>
+		    </div>
+	    </div>
+    </div><!--
+--></div><!--
+
+    --><script src="scripts/jquery-3.3.1.min.js"></script><!--
+    --><script src="scripts/jszip.min.js"></script><!--
+    --><script src="scripts/dictionary.js"></script><!--
+    --><script src="scripts/config.js"></script><!--
+    --><script src="scripts/script.js"></script><!--
+    --><script src="scripts/websocket.js"></script><!--
+
+--></body></html>

@@ -4,14 +4,15 @@ html, body {
 	margin: 0px;
 	padding: 0px;
 	height: 100%;
-    min-width: 640px;
-    min-height: 334px;
 }
 
 body {
 
 	font-family: Roboto, sans-serif;
 	color: #24292e;
+
+    min-width: 640px;
+    min-height: 334px;
 }
 
 #navbar {
@@ -24,10 +25,71 @@ body {
 	cursor: default;
 }
 
+#main {
+
+    vertical-align: top;
+}
+
+#login {
+
+	display: none;
+
+	text-align: center;
+	cursor: default;
+
+    vertical-align: top;
+    padding-top: 60px;
+}
+
+#login input {
+
+    width: 200px;
+}
+
+#login .field {
+
+    margin: 5px;
+}
+
+#login .submit {
+
+    margin-top: 20px;
+}
+
+#login .logo {
+
+    background-image: url("../images/logo.png");
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height: 300px;
+    width: 800px;
+
+    display: inline-block;
+}
+
+#login span {
+
+    text-align: left;
+    min-width: 70px;
+    display: inline-block;
+}
+
+#login button {
+
+    display: inline-block;
+}
+
 #loading {
 
 	text-align: center;
 	cursor: default;
+}
+
+#dialog-sub-message {
+
+    font-size: 24px;
 }
 
 .load-message {
@@ -35,6 +97,15 @@ body {
 	margin-top: 100px;
 	font-size: 48px;
 }
+
+#dialog {
+
+	display: none;
+
+	text-align: center;
+	cursor: default;
+}
+
 
 #process {
 

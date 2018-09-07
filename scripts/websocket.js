@@ -1,4 +1,4 @@
-
+var token = "";
 var ws;
 
 var onmessage = function(e) {
@@ -9,7 +9,54 @@ var onmessage = function(e) {
 
 		alert( message[1] );
 	}
+	else if ( message[0] == "session" ) {
+
+        if ( message[1] == "success" ) {
+
+		    token = message[2];
+            setCookie("token", token);
+
+		    reset();
+		    unload();
+        }
+        else {
+
+            alert("Wrong user/password combination");
+            login();
+        }
+	}
+    else if ( message[0] == "validate" ) {
+
+        if ( message[1] == token ) {
+
+            if ( message[2] == "waiting" ) {
+
+		        load(dictionary.WAITING_FOR_PREDICTOR_TO_BE_READY);
+            }
+            else {
+
+		        reset();
+		        unload();
+            }
+        }
+        else {
+
+            token = "";
+            login();
+        }
+    }
 	else if ( message[0] == "status" ) {
+
+        if ( message[1] == "start" || message[1] == "waiting" ) {
+
+            sessioncheck(message[1]);
+        }
+        else if ( token == "" ) {
+
+            //FIXME ignore message due being loged out
+            login();
+            return;
+        }
 
 		switch ( message[1] ) {
 
@@ -25,14 +72,14 @@ var onmessage = function(e) {
 				unload();
 				break;
 
+			case "preparing":
+
+				load(dictionary.PREDICTOR_IS_PREPARING_REQUEST);
+				break;
+
 			case "procesing":
 
 				load(dictionary.PREDICTOR_IS_PROCESING_REQUEST);
-				break;
-
-			case "waiting":
-
-				load(dictionary.WAITING_FOR_PREDICTOR_TO_BE_READY);
 				break;
 
 			case "shutdown":
@@ -46,6 +93,13 @@ var onmessage = function(e) {
 		}
 	}
 	else if ( message[0] == "result" ) {
+
+        if ( token == "" ) {
+
+            //FIXME ignore message due being loged out
+            login();
+            return;
+        }
 
 		load(dictionary.PROCESSING_PREDICTOR_RESPONSE);
 
@@ -103,16 +157,12 @@ var onmessage = function(e) {
 	}
 };
 
-/*var onclose = function(){
+var onclose = function(){
 
-	if ( haveLoadedAtLeastOnce ) {
-
-		load(dictionary.TRYING_TO_RECONNECT);
-	}
-
-	setTimeout(reconnect, 1000);
+	dialog("No hay conexion con el servidor.", "Intente nuevamente mas tarde o comuniquese con los simios de IT")
 };
 
+/*
 var reconnectCount = 1;
 
 var reconnect = function () {
@@ -125,12 +175,14 @@ var reconnect = function () {
 	console.log("Intentando reconectar... try: " + reconnectCount++);
 }
 
+
 var onopen = function () {
 
 	haveLoadedAtLeastOnce = true;
 };*/
 
 ws = new WebSocket(websocketURL);
-//ws.onclose = onclose;
+
+ws.onclose = onclose;
 //ws.onopen = onopen;
 ws.onmessage = onmessage;

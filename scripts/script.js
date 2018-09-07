@@ -11,30 +11,93 @@ var totalReactivos = 0;
 //FIXME
 document.body.innerHTML = document.body.innerHTML.replace(/\r/g, "").replace(/\n/g, "").replace(/\t/g, "");
 
+function login() {
+
+	$("#main").hide();
+	$("#login").show();
+	$("#dialog").hide();
+	$("#loading").hide();
+}
+
+function session() {
+
+    var user = $("#user");
+    var pass = $("#pass");
+
+    if ( user.val() == "" ) {
+
+        alert("Ingrese un usuario");
+    }
+    else if ( pass.val() == "" ) {
+
+        alert("Ingrese su clave");
+    }
+    else {
+
+        load("Iniciando Sesión...");
+        ws.send("login;" + user.val() + ";" + pass.val());
+        pass.val("");
+    }
+}
+
+function sessioncheck(status) {
+
+    var token = getCookie("token");
+
+    if ( token == "" ) {
+
+        login(status);
+    }
+    else {
+
+       load("Validando Sesión...");
+       ws.send("validate;" + token);
+    }
+}
+
+function dialog( message, submessage ) {
+
+	$("#main").hide();
+	$("#login").hide();
+	$("#dialog").show();
+	$("#loading").hide();
+
+	$("#dialog-message").text(message);
+	$("#dialog-sub-message").text(submessage);
+}
+
 function load( message ) {
 
+	$("#main").hide();
+	$("#login").hide();
+	$("#dialog").hide();
 	$("#loading").show();
-	$("#content").hide();
-	$("#process").hide();
 
 	$("#load-message").text(message);
 }
 
 function process(message, progress) {
 
+	$("#main").show();
+	$("#login").hide();
+	$("#dialog").hide();
 	$("#loading").hide();
+
 	$("#content").hide();
 	$("#process").show();
 
 	$("#upload-message").text(message);
-
 	$("#progress-val").text(Math.floor(progress) + "%");
 	$("#progress-in").css("width", progress + "%");
 }
 
 function unload() {
 
+	$("#main").show();
+	$("#login").hide();
+	$("#dialog").hide();
 	$("#loading").hide();
+
 	$("#content").show();
 	$("#process").hide();
 }
