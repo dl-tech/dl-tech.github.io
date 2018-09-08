@@ -121,8 +121,6 @@ function reset() {
 	$("#button-predict").prop("disabled", true);
 	$("#button-reset").prop("disabled", true);
 
-	/* Tricky */
-	$("#controls").trigger("reset");
 	$("#gallery").empty();
 }
 
@@ -219,6 +217,9 @@ previewNextImage = function (previewIndex, startAt) {
 		b.readAsDataURL( selectedFiles[previewIndex] );
 	}
 	else {
+
+		/* Tricky */
+		$("#controls").trigger("reset");
 
 		$("#button-predict").prop("disabled", false);
 		$("#button-reset").prop("disabled", false);
