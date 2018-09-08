@@ -33,46 +33,9 @@ body {
     display: inline-block;
 }
 
-#login input {
+#login {
 
-    width: 200px;
-}
-
-#login .field {
-
-    margin: 5px;
-}
-
-#login .submit {
-
-    margin-top: 20px;
-}
-
-#login .logo {
-
-    margin-top: 60px;
-
-    background-image: url("../images/logo.png");
-    background-size: 100% auto;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    height: 300px;
-    width: 800px;
-
-    display: inline-block;
-}
-
-#login span {
-
-    text-align: left;
-    min-width: 70px;
-    display: inline-block;
-}
-
-#login button {
-
-    display: inline-block;
+    height: 100%;
 }
 
 #loading {
