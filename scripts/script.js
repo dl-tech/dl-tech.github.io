@@ -205,10 +205,12 @@ previewNextImage = function (previewIndex, startAt) {
 				previewNode.lastChild.lastChild.setAttribute("id", "status-" + (alreadyRequested+previewIndex));
 				previewNode.lastChild.lastChild.innerHTML = '';
 				previewGallery.appendChild(previewNode);
+
+				previewNextImage( previewIndex + 1, startAt );
 			}
 
 			b.readAsDataURL( selectedFiles[previewIndex] );
-			previewNextImage( previewIndex + 1, startAt );
+
 		}
 		else {
 
