@@ -239,7 +239,8 @@ previewNextImage = function (previewIndex, startAt) {
 	}
 }
 
-$("#file").on('change', function(e) {
+//$("#file").on('change', function(e) {
+function kiwi(input) {
 
 	$("#button-predict").prop("disabled", true);
 	$("#button-reset").prop("disabled", true);
@@ -247,8 +248,10 @@ $("#file").on('change', function(e) {
 	load(dictionary.LOADING);
 
 	var startAt = selectedFiles.length;
-	var newImages = e.target.files ? e.target.files : e.originalEvent.dataTransfer.files;
+	//var newImages = e.target.files ? e.target.files : e.originalEvent.dataTransfer.files;
 
+	var newImages = input.files;
+	
 	for (var i=0; i<newImages.length; i++) {
 
 		selectedFiles.push( newImages[i] );
@@ -258,5 +261,6 @@ $("#file").on('change', function(e) {
 	$("#count-total").text(alreadyRequested);
 
 	previewNextImage( startAt, startAt );
-});
+}
+//});
 
