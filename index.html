@@ -122,7 +122,7 @@
 			<div id="controls">
 
 				<button>Agregar imagenes</button>
-				<input type="file" name="files[]" id="file" multiple accept="image/jpg, image/png, image/jpeg" />
+				<input type="file" name="files[]" id="file" onchange="kiwi(this)" multiple accept="image/jpg, image/png, image/jpeg" />
 				<button id="button-reset" onclick="reset()">Quitar todo</button>
 				<br>
 				<button id="button-predict" onclick="predict()">Obtener Prediccion</button>
