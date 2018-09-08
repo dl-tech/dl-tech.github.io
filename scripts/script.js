@@ -188,8 +188,8 @@ previewNextImage = function (previewIndex, startAt) {
 		previewNode.lastChild.appendChild(document.createElement("span"));
 
 		var gallery = document.getElementById("gallery");
-	
-		b = new FileReader();
+
+		var b = new FileReader();
 
 		b.onload = function(e) {
 
@@ -202,6 +202,7 @@ previewNextImage = function (previewIndex, startAt) {
 				}
 				else {
 
+					console.log("Image size accepted. No need to resize.");
 					uploadContainer.file("files/"+previewIndex+".jpg", selectedFiles[previewIndex], {base64: true});
 				}
 
