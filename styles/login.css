@@ -1,7 +1,20 @@
 @import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
 
+.solid-background {
+
+	width: inherit;
+	height: inherit;
+
+	background: #004b8c;
+	
+	display: inline-block;
+	vertical-align: middle;
+}
+
 .fading-background {
+
+	margin-left: -100%;
 
 	width: inherit;
 	height: inherit;
@@ -15,7 +28,7 @@
 	animation-iteration-count: infinite;
 	
 	display: inline-block;
-	vertical-align: top;
+	vertical-align: middle;
 }
 
 @keyframes fade {
@@ -24,34 +37,28 @@
     50% {opacity: 0.2}
 }
 
-.solid-background {
+.login-box {
 
 	margin-left: -100%;
 
 	width: inherit;
-	height: inherit;
 
-	background: #004b8c;
-	
+	vertical-align: middle;
 	display: inline-block;
-	vertical-align: top;
-}
-
-.login-box {
-
-	position: absolute;
-	top: calc(50% - 35px);
-	left: calc(50% - 225px);
-}
-
-.login-box div {
 	
-	float: left;
+	opacity: 0.99999;
+}
+
+.namae {
+
+	vertical-align: middle;
+	display: inline-block;
+
 	color: #fff;
 	font-family: 'Exo', sans-serif;
 	font-size: 35px;
 	font-weight: 200;
-	
+
 	cursor: default;
 }
 
@@ -63,11 +70,9 @@
 
 .login-credentials {
 
-    position: absolute;
-    top: calc(50% - 75px);
-    left: 50%;
-    height: 131px;
-    width: 258px;
+	display: inline-block;
+	vertical-align: middle;
+
     padding: 10px;
 }
 
