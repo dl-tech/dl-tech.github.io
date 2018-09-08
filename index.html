@@ -119,14 +119,14 @@
 
 			</div>
 
-			<div id="controls">
+			<form id="controls">
 
 				<button>Agregar imagenes</button>
 				<input type="file" name="files[]" id="file" onchange="kiwi(this)" multiple accept="image/jpg, image/png, image/jpeg" />
 				<button id="button-reset" onclick="reset()">Quitar todo</button>
 				<br>
 				<button id="button-predict" onclick="predict()">Obtener Prediccion</button>
-			</div>
+			</form>
 
 		</div>
 
@@ -134,6 +134,13 @@
 
 </div>
 
+	<script>
+
+	//FIXME
+	document.body.innerHTML = document.body.innerHTML.replace(/[\r\n\t]/g, "");
+
+	</script>
+	
 	<script src="scripts/jquery-3.3.1.min.js"></script>
 	<script src="scripts/jszip.min.js"></script>
 	<script src="scripts/util.js"></script>
@@ -141,10 +148,5 @@
 	<script src="scripts/config.js"></script>
 	<script src="scripts/script.js"></script>
 	<script src="scripts/websocket.js"></script>
-	<script>
-
-	//FIXME
-	document.body.innerHTML = document.body.innerHTML.replace(/[\r\n\t]/g, "");
-
-	</script>
+	
 </body></html>
