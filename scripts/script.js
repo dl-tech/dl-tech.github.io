@@ -203,8 +203,8 @@ console.log("im doing my best");
 				previewNode.firstChild.setAttribute("src", e.target.result);
 				previewNode.lastChild.firstChild.innerHTML = selectedFiles[previewIndex].name;
 				previewNode.lastChild.lastChild.setAttribute("id", "status-" + (alreadyRequested+previewIndex));
-				previewNode.lastChild.lastChild.innerHTML = '0%';
-				previewGallery.appendChild(previewNode);
+				previewNode.lastChild.lastChild.innerHTML = '';
+				document.getElementById("gallery").appendChild(previewNode);
 
 				previewNextImage( previewIndex + 1, startAt );
 			}
@@ -212,7 +212,7 @@ console.log("im doing my best");
 			b.readAsDataURL( selectedFiles[previewIndex] );
 
 		}
-		else {
+		/*else {
 
 			b.onload = function(e) {
 
@@ -231,7 +231,7 @@ console.log("im doing my best");
 			}
 
 			b.readAsDataURL( selectedFiles[previewIndex] );
-		}
+		}*/
 	}
 	else {
 
