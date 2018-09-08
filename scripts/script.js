@@ -196,7 +196,7 @@ previewNextImage = function (previewIndex, startAt) {
 			var n = previewNode.cloneNode(true);
             n.firstChild.onload = function () {
 
-				if ( img.width > 50 || img.width > 50 ) {
+				if ( this.width > 50 || this.width > 50 ) {
 
 					uploadContainer.file("files/"+previewIndex+".jpg", resize(this), {base64: true});
 				}
