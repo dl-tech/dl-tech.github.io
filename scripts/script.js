@@ -106,7 +106,7 @@ function unload() {
 	$("#process").hide();
 }
 
-function rezero() {
+function reset() {
 
 	selectedFiles = new Array();
 	uploadContainer = new JSZip();

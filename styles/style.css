@@ -71,6 +71,12 @@ body {
 	height: 100%;
 }
 
+.star-platinum {
+
+    vertical-align: top;
+	display: inline-block;
+}
+
 #process {
 
 	text-align: center;
