@@ -15,6 +15,7 @@
 	animation-iteration-count: infinite;
 	
 	display: inline-block;
+	vertical-align: top;
 }
 
 @keyframes fade {
@@ -33,6 +34,7 @@
 	background: #004b8c;
 	
 	display: inline-block;
+	vertical-align: top;
 }
 
 .login-box {
