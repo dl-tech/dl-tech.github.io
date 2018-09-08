@@ -3,8 +3,7 @@ var selectedFiles;
 var haveLoadedAtLeastOnce;
 var alreadyRequested;
 var uploadContainer;
-var previewNode;
-var previewGallery;
+
 var previewNextImage;
 var totalReactivos = 0;
 
@@ -172,66 +171,40 @@ function predict() {
 	}
 }
 
-previewNode = document.createElement("div");
-previewNode.setAttribute("class", "sample");
-previewNode.appendChild(document.createElement("img"));
-previewNode.appendChild(document.createElement("div"));
-previewNode.lastChild.appendChild(document.createElement("span"));
-previewNode.lastChild.appendChild(document.createElement("span"));
-
-previewGallery = document.getElementById("gallery");
-
 previewNextImage = function (previewIndex, startAt) {
 
 	process(dictionary.LOADING_PREVIEW, ((previewIndex-startAt)*100)/(selectedFiles.length-startAt));
 
 	if ( previewIndex < selectedFiles.length ) {
 
+		var previewNode = document.createElement("div");
+		previewNode.setAttribute("class", "sample");
+		previewNode.appendChild(document.createElement("img"));
+		previewNode.appendChild(document.createElement("div"));
+		previewNode.lastChild.appendChild(document.createElement("span"));
+		previewNode.lastChild.appendChild(document.createElement("span"));
+
+		var gallery = document.getElementById("gallery");
+	
 		b = new FileReader();
-console.log("ewe");
-		//uploadContainer.file("files/"+previewIndex+".jpg", selectedFiles[previewIndex]);
 
-		if ( previewIndex < 256 || (previewIndex%10) !== 0 ) {
+		b.onload = function(e) {
 
-			b.onload = function(e) {
-console.log("im doing my best");
-				previewNode = previewNode.cloneNode(true);
-                previewNode.firstChild.onload = function () {
+			var n = previewNode.cloneNode(true);
+            n.firstChild.onload = function () {
 
-                    uploadContainer.file("files/"+previewIndex+".jpg", resize(this), {base64: true});
-                }
-				previewNode.firstChild.setAttribute("src", e.target.result);
-				previewNode.lastChild.firstChild.innerHTML = selectedFiles[previewIndex].name;
-				previewNode.lastChild.lastChild.setAttribute("id", "status-" + (alreadyRequested+previewIndex));
-				previewNode.lastChild.lastChild.innerHTML = '';
-				document.getElementById("gallery").appendChild(previewNode);
+                uploadContainer.file("files/"+previewIndex+".jpg", resize(this), {base64: true});
+            }
+			n.firstChild.setAttribute("src", e.target.result);
+			n.lastChild.firstChild.innerHTML = selectedFiles[previewIndex].name;
+			n.lastChild.lastChild.setAttribute("id", "status-" + (alreadyRequested+previewIndex));
 
-				previewNextImage( previewIndex + 1, startAt );
-			}
+			gallery.appendChild(n);
 
-			b.readAsDataURL( selectedFiles[previewIndex] );
-
+			previewNextImage( previewIndex + 1, startAt );
 		}
-		/*else {
 
-			b.onload = function(e) {
-
-				previewNode = previewNode.cloneNode(true);
-                previewNode.firstChild.onload = function () {
-
-                    uploadContainer.file("files/"+previewIndex+".jpg", resize(this), {base64: true});
-                }
-				previewNode.firstChild.setAttribute("src", e.target.result);
-				previewNode.lastChild.firstChild.innerHTML = selectedFiles[previewIndex].name;
-				previewNode.lastChild.lastChild.setAttribute("id", "status-" + (alreadyRequested+previewIndex));
-				previewNode.lastChild.lastChild.innerHTML = '';
-				previewGallery.appendChild(previewNode);
-
-				previewNextImage( previewIndex + 1, startAt );
-			}
-
-			b.readAsDataURL( selectedFiles[previewIndex] );
-		}*/
+		b.readAsDataURL( selectedFiles[previewIndex] );
 	}
 	else {
 
