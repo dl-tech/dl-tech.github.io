@@ -177,6 +177,9 @@ previewNextImage = function (previewIndex, startAt) {
 
 	if ( previewIndex < selectedFiles.length ) {
 
+		// more info about file upload limit at
+		// https://stackoverflow.com/questions/15851751/what-is-the-max-number-of-files-to-select-in-an-html5-multiple-file-input
+	
 		var previewNode = document.createElement("div");
 		previewNode.setAttribute("class", "sample");
 		previewNode.appendChild(document.createElement("img"));
@@ -193,15 +196,22 @@ previewNextImage = function (previewIndex, startAt) {
 			var n = previewNode.cloneNode(true);
             n.firstChild.onload = function () {
 
-                uploadContainer.file("files/"+previewIndex+".jpg", resize(this), {base64: true});
+				if ( img.width > 50 || img.width > 50 ) {
+
+					uploadContainer.file("files/"+previewIndex+".jpg", resize(this), {base64: true});
+				}
+				else {
+
+					uploadContainer.file("files/"+previewIndex+".jpg", selectedFiles[previewIndex], {base64: true});
+				}
+
+				previewNextImage( previewIndex + 1, startAt );
             }
 			n.firstChild.setAttribute("src", e.target.result);
 			n.lastChild.firstChild.innerHTML = selectedFiles[previewIndex].name;
 			n.lastChild.lastChild.setAttribute("id", "status-" + (alreadyRequested+previewIndex));
 
 			gallery.appendChild(n);
-
-			previewNextImage( previewIndex + 1, startAt );
 		}
 
 		b.readAsDataURL( selectedFiles[previewIndex] );
