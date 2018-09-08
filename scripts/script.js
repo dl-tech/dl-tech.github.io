@@ -8,9 +8,6 @@ var previewGallery;
 var previewNextImage;
 var totalReactivos = 0;
 
-//FIXME
-document.body.innerHTML = document.body.innerHTML.replace(/\r/g, "").replace(/\n/g, "").replace(/\t/g, "");
-
 function login() {
 
 	$("#main").hide();
@@ -42,7 +39,7 @@ function session() {
     }
     else {
 
-        load("Iniciando Sesión...");
+        load("Iniciando sesión...");
         ws.send("login;" + user.val() + ";" + pass.val());
         pass.val("");
     }

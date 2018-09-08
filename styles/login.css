@@ -1,5 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+@import url(familia.css?family=Exo:100,200,400);
+@import url(familia.css?family=Source+Sans+Pro:700,400,300);
 
 .solid-background {
 
@@ -88,6 +89,8 @@
 	font-size: 16px;
 	font-weight: 400;
 	padding: 4px;
+	
+	display: block;
 }
 
 .login-credentials input[type=password] {
@@ -103,12 +106,14 @@
 	font-weight: 400;
 	padding: 4px;
 	margin-top: 10px;
+	
+	display: block;
 }
 
 .login-credentials button {
 
 	width: 258px;
-	height: 38px;
+	height: 35px;
 	background: #00e5ffa1;
 	border: none;
 	cursor: pointer;

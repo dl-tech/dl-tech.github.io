@@ -1,94 +1,150 @@
 <!DOCTYPE html><html lang="en"><head>
 
 	<meta charset="utf-8">
-	<title>DL Tech</title>
+	<title>Deeplab TECH</title>
 	<meta name="viewport" content="width=device-width" />
 	<link rel="stylesheet" href="styles/progress.css"/>
 	<link rel="stylesheet" href="styles/spinner.css"/>
 	<link rel="stylesheet" href="styles/login.css"/>
 	<link rel="stylesheet" href="styles/style.css"/>
+	<link rel="stylesheet" href="styles/loading.css"/>
 
-</head><body><!--
+</head><body>
 
---><div id="dialog" class="pepsi" style="display:none;">
+<div id="loading" class="crazy-diamond">
 
-	        <div id="dialog-message" class="load-message">Buenos dias</div>
-	        <br>
-	        <div id="dialog-sub-message">buenas tardes</div>
-     </div><!--
+	<div class="valign"></div>
 
---><div id="loading" class="pepsi">
+	<div class="venter">
 
-	    <div id="load-message" class="load-message">Conectando...</div>
-	    <br>
-	    <div class="load"><hr/><hr/><hr/><hr/></div>
-    </div><!--
+		<div id="load-message" class="load-message">Conectando</div>
 
---><div id="login" class="pepsi" style="display:none;">
+		<div class="load-container">
 
-<div class="solid-background"></div>
-<div class="fading-background"></div>
+			<div class="load"><hr/><hr/><hr/><hr/></div>
 
-<div class="login-box">
+		</div>
 
-	<div class="namae">Deeplab<span>TECH</span></div>
-	<div class="login-credentials"><input type="text" placeholder="username" id="user"><br><input type="password" placeholder="password" id="pass"><br><button onclick="session();">Iniciar Sesión</button></div>
+	</div>
+
 </div>
 
+<div id="dialog" class="crazy-diamond" style="display:none;">
 
+	<div class="valign"></div>
 
-</div><!--
+	<div class="venter">
 
---></div><!--
+		<div id="dialog-message" class="load-message">Buenos dias</div>
 
---><div id="main" class="pepsi" style="display:none;"><!--
-    --><div id="navbar">
+		<br>
 
-            <button onclick="logout();">Log out</button>
+		<div id="dialog-sub-message">buenas tardes</div>
 
-       </div><!--
-    --><!--
+	</div>
 
---><div id="process">
+</div>
 
-	    <div id="upload-message" class="load-message">Conectando...</div>
-	    <br>
-	    <div class="progress"><span id="progress-val">0%</span><span id="progress-bar"><span id="progress-in" style="width: 0%"></span></span></div>
-    </div><!--
+<div id="login" class="crazy-diamond" style="display:none;">
 
---><div id="content">
+	<div class="solid-background"></div>
+	<div class="fading-background"></div>
 
-	    <div id="gallery"></div>
+	<div class="login-box">
 
-	    <div id="sidebar">
+		<div class="namae">Deeplab<span>TECH</span></div>
+		<div class="login-credentials">
 
-		    <div id="stats">
+			<input type="text" placeholder="username" id="user">
+			<input type="password" placeholder="password" id="pass">
+			<button onclick="session();">Iniciar Sesión</button>
 
-			    <div><span class="tit">Sin Consultar:</span><span class="count" id="count-new">0</span></div>
-			    <div><span class="tit">Consultados:</span><span class="count" id="count-total">0</span></div>
-			    <br>
-			    <div><span class="tit">Reactivos:</span><span class="count" id="count-reactivo">0</span></div>
-			    <div><span class="tit">No Reactivos:</span><span class="count" id="count-noreactivo">0</span></div>
-		    </div>
+		</div>
 
-		    <div id="controls">
+	</div>
 
-			    <button>Agregar imagenes</button>
-			    <input type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple  accept="image/jpg, image/png, image/jpeg" />
-			    <button id="button-reset" onclick="reset()">Quitar todo</button>
-			    <br>
-			    <button id="button-predict" onclick="predict()">Obtener Prediccion</button>
-		    </div>
-	    </div>
-    </div><!--
---></div><!--
+</div>
 
-    --><script src="scripts/jquery-3.3.1.min.js"></script><!--
-    --><script src="scripts/jszip.min.js"></script><!--
-    --><script src="scripts/util.js"></script><!--
-    --><script src="scripts/dictionary.js"></script><!--
-    --><script src="scripts/config.js"></script><!--
-    --><script src="scripts/script.js"></script><!--
-    --><script src="scripts/websocket.js"></script><!--
+<div id="main" class="crazy-diamond" style="display:none;">
 
---></body></html>
+	<div id="navbar">
+
+		<button onclick="logout();">Log out</button>
+
+	</div>
+
+	<div id="process" style="display:none;">
+
+		<div id="upload-message" class="load-message">Conectando...</div>
+
+		<br>
+
+		<div class="progress">
+			<span id="progress-val">0%</span>
+			<span id="progress-bar">
+				<span id="progress-in" style="width: 0%"></span>
+			</span>
+		</div>
+
+	</div>
+
+<div id="content">
+
+	<div id="gallery"></div>
+
+		<div id="sidebar">
+
+			<div id="stats">
+
+				<div>
+					<span class="count-name">Sin Consultar:</span>
+					<span class="count-value" id="count-new">0</span>
+				</div>
+
+				<div>
+					<span class="count-name">Consultados:</span>
+					<span class="count-value" id="count-total">0</span>
+				</div>
+
+				<br>
+				<div>
+					<span class="count-name">Reactivos:</span>
+					<span class="count-value" id="count-reactivo">0</span>
+				</div>
+
+				<div>
+					<span class="count-name">No Reactivos:</span>
+					<span class="count-value" id="count-noreactivo">0</span>
+				</div>
+
+			</div>
+
+			<div id="controls">
+
+				<button>Agregar imagenes</button>
+				<input type="file" name="files[]" id="file" multiple accept="image/jpg, image/png, image/jpeg" />
+				<button id="button-reset" onclick="reset()">Quitar todo</button>
+				<br>
+				<button id="button-predict" onclick="predict()">Obtener Prediccion</button>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+	<script src="scripts/jquery-3.3.1.min.js"></script>
+	<script src="scripts/jszip.min.js"></script>
+	<script src="scripts/util.js"></script>
+	<script src="scripts/dictionary.js"></script>
+	<script src="scripts/config.js"></script>
+	<script src="scripts/script.js"></script>
+	<script src="scripts/websocket.js"></script>
+	<script>
+
+	//FIXME
+	document.body.innerHTML = document.body.innerHTML.replace(/[\r\n\t]/g, "");
+
+	</script>
+</body></html>
