@@ -16,7 +16,7 @@ var onmessage = function(e) {
 		    token = message[2];
             setCookie("token", token);
 
-		    reset();
+		    rezero();
 		    unload();
         }
         else {
@@ -35,7 +35,7 @@ var onmessage = function(e) {
             }
             else {
 
-		        reset();
+		        rezero();
 		        unload();
             }
         }
@@ -63,7 +63,7 @@ var onmessage = function(e) {
 
 			case "ready":
 
-				reset();
+				rezero();
 				unload();
 				break;
 
