@@ -122,7 +122,7 @@ function reset() {
 	$("#button-predict").prop("disabled", true);
 	$("#button-reset").prop("disabled", true);
 
-	$("#gallery").empty();
+	//$("#gallery").empty();
 }
 
 function predict() {
@@ -203,7 +203,7 @@ console.log("im doing my best");
 				previewNode.firstChild.setAttribute("src", e.target.result);
 				previewNode.lastChild.firstChild.innerHTML = selectedFiles[previewIndex].name;
 				previewNode.lastChild.lastChild.setAttribute("id", "status-" + (alreadyRequested+previewIndex));
-				previewNode.lastChild.lastChild.innerHTML = '';
+				previewNode.lastChild.lastChild.innerHTML = '0%';
 				previewGallery.appendChild(previewNode);
 
 				previewNextImage( previewIndex + 1, startAt );
