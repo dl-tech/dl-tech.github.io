@@ -40,10 +40,8 @@
 .login-box {
 
 	position: absolute;
-
 	top: calc(50% - 35px);
-	left: calc(50% - 255px);
-	z-index: 2;
+	left: calc(50% - 225px);
 }
 
 .login-box div {
@@ -65,13 +63,12 @@
 
 .login-credentials {
 
-	position: absolute;
-	top: calc(50% - 75px);
-	left: calc(50% - 50px);
-	height: 150px;
-	width: 350px;
-	padding: 10px;
-	z-index: 2;
+    position: absolute;
+    top: calc(50% - 75px);
+    left: 50%;
+    height: 131px;
+    width: 258px;
+    padding: 10px;
 }
 
 .login-credentials input[type=text] {
