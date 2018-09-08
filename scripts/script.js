@@ -121,6 +121,8 @@ function reset() {
 	$("#button-predict").prop("disabled", true);
 	$("#button-reset").prop("disabled", true);
 
+	/* Tricky */
+	$("#controls").trigger("reset");
 	$("#gallery").empty();
 }
 
