@@ -188,13 +188,13 @@ previewNextImage = function (previewIndex, startAt) {
 	if ( previewIndex < selectedFiles.length ) {
 
 		b = new FileReader();
-
+console.log("ewe");
 		//uploadContainer.file("files/"+previewIndex+".jpg", selectedFiles[previewIndex]);
 
 		if ( previewIndex < 256 || (previewIndex%10) !== 0 ) {
 
 			b.onload = function(e) {
-
+console.log("im doing my best");
 				previewNode = previewNode.cloneNode(true);
                 previewNode.firstChild.onload = function () {
 
