@@ -122,7 +122,7 @@ function reset() {
 	$("#button-reset").prop("disabled", true);
 
 	/* Tricky */
-	$("#controls").trigger("reset");
+	$("#star-platinum").trigger("reset");
 	$("#gallery").empty();
 }
 
@@ -221,7 +221,7 @@ previewNextImage = function (previewIndex, startAt) {
 	else {
 
 		/* Tricky */
-		$("#controls").trigger("reset");
+		$("#star-platinum").trigger("reset");
 
 		$("#button-predict").prop("disabled", false);
 		$("#button-reset").prop("disabled", false);
