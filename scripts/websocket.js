@@ -21,8 +21,8 @@ var onmessage = function(e) {
         }
         else {
 
-            alert("Wrong user/password combination");
             login();
+            alert("Wrong user/password combination");
         }
 	}
     else if ( message[0] == "validate" ) {

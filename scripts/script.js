@@ -42,6 +42,8 @@ function session() {
         ws.send("login;" + user.val() + ";" + pass.val());
         pass.val("");
     }
+
+	return false;
 }
 
 function sessioncheck(status) {
