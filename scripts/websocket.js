@@ -1,7 +1,7 @@
-var token = "";
-var ws;
 
-var onmessage = function(e) {
+var ws = new WebSocket(websocketURL);
+
+ws.onmessage = function(e) {
 
 	var message = e.data.split(";");
 
@@ -11,7 +11,12 @@ var onmessage = function(e) {
 	}
 	else if ( message[0] == "session" ) {
 
+		predictorStatus = message[3];
+
         if ( message[1] == "success" ) {
+
+			/* Tricky */
+			$("#login-credentials").trigger("reset");
 
 		    token = message[2];
             setCookie("token", token);
@@ -27,17 +32,12 @@ var onmessage = function(e) {
 	}
     else if ( message[0] == "validate" ) {
 
+		predictorStatus = message[2];
+
         if ( message[1] == token ) {
 
-            if ( message[2] == "waiting" ) {
-
-		        load(dictionary.WAITING_FOR_PREDICTOR_TO_BE_READY);
-            }
-            else {
-
-		        reset();
-		        unload();
-            }
+		    reset();
+		    unload();
         }
         else {
  
@@ -47,9 +47,13 @@ var onmessage = function(e) {
     }
 	else if ( message[0] == "status" ) {
 
+		clearTimeout(predictorTimeout);
+
         if ( message[1] == "start" || message[1] == "waiting" ) {
 
-            sessioncheck(message[1]);
+			predictorStatus = message[1];
+
+            sessioncheck();
             return;
         }
         else if ( token == "" ) {
@@ -163,7 +167,7 @@ var onmessage = function(e) {
 	}
 };
 
-var onclose = function(){
+ws.onclose = function(){
 
 	var submessage = "Puede que se perdiera la conexion a internet";
 	submessage += "<br>o que el servicio de prediccion no este disponible.";
@@ -171,28 +175,3 @@ var onclose = function(){
 
 	dialog("No hay conexión con el servidor.", submessage)
 };
-
-/*
-var reconnectCount = 1;
-
-var reconnect = function () {
-
-	ws = new WebSocket(websocketURL);
-	ws.onopen = onopen;
-	ws.onmessage = onmessage;
-	ws.onclose = onclose;
-
-	console.log("Intentando reconectar... try: " + reconnectCount++);
-}
-
-
-var onopen = function () {
-
-	haveLoadedAtLeastOnce = true;
-};*/
-
-ws = new WebSocket(websocketURL);
-
-ws.onclose = onclose;
-//ws.onopen = onopen;
-ws.onmessage = onmessage;

@@ -1,11 +1,16 @@
 
 var selectedFiles;
-var haveLoadedAtLeastOnce;
 var alreadyRequested;
 var uploadContainer;
 
 var previewNextImage;
 var totalReactivos = 0;
+
+var token = "";
+
+var predictorStatus = "disconnected";
+var predictorTimeout = 0;// no cambiar
+var predictorTimeoutTime = 2 * 60 * 1000;// 2 minutos
 
 function login() {
 
@@ -41,20 +46,19 @@ function session() {
         load("Iniciando sesión...");
         ws.send("login;" + user.val() + ";" + pass.val());
 
-		/* Tricky */
-        $("#login-credentials").trigger("reset");
+        pass.val("");
     }
 
 	return false;
 }
 
-function sessioncheck(status) {
+function sessioncheck() {
 
     token = getCookie("token");
 
     if ( token == "" ) {
 
-        login(status);
+        login();
     }
     else {
 
@@ -131,6 +135,17 @@ function reset() {
 }
 
 function predict() {
+
+	if ( predictorStatus != "ready" ) {
+
+		load(dictionary.WAITING_FOR_PREDICTOR_TO_BE_READY);
+		predictorTimeout = setTimeout(function () {
+
+			dialog("El predictor no se encuentra listo.", "Intente nuevamente mas tarde.<br>Si el problema persiste contacte a soporte al cliente.");
+			
+		}, predictorTimeoutTime);
+		return;
+	}
 
 	if ( selectedFiles.length > 0 ) {
 

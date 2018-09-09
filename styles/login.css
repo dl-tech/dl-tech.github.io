@@ -96,7 +96,7 @@
     padding: 10px;
 }
 
-.login-credentials input[type=text] {
+#login-credentials input[type=text] {
 
 	width: 250px;
 	height: 30px;
@@ -112,7 +112,7 @@
 	display: block;
 }
 
-.login-credentials input[type=password] {
+#login-credentials input[type=password] {
 
 	width: 250px;
 	height: 30px;
@@ -129,7 +129,7 @@
 	display: block;
 }
 
-.login-credentials input[type=submit] {
+#login-credentials input[type=submit] {
 
 	width: 258px;
 	height: 38px;
@@ -145,17 +145,17 @@
 	margin-top: 10px;
 }
 
-.login-credentials input[type=submit]:hover {
+#login-credentials input[type=submit]:hover {
 	
 	opacity: 0.8;
 }
 
-.login-credentials input[type=submit]:active {
+#login-credentials input[type=submit]:active {
 	
 	opacity: 0.6;
 }
 
-.login-credentials input[type=text]:focus {
+#login-credentials input[type=text]:focus {
 
 	outline: none;
 }
@@ -165,7 +165,7 @@
 	outline: none;
 }
 
-.login-credentials input[type=submit]:focus{
+#login-credentials input[type=submit]:focus{
 
 	outline: none;
 }
