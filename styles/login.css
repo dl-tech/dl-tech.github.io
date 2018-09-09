@@ -88,7 +88,7 @@
 	font-weight: 500;
 }
 
-.login-credentials {
+#login-credentials {
 
 	display: inline-block;
 	vertical-align: middle;

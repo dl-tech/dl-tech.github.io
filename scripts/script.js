@@ -40,7 +40,9 @@ function session() {
 
         load("Iniciando sesión...");
         ws.send("login;" + user.val() + ";" + pass.val());
-        pass.val("");
+
+		/* Tricky */
+        $("#login-credentials").trigger("reset");
     }
 
 	return false;
