@@ -165,7 +165,11 @@ var onmessage = function(e) {
 
 var onclose = function(){
 
-	dialog("No hay conexión con el servidor.", "Puede que no tenga conexion a internet o que el servicio de prediccion no se encuentre disponible.<br>Vuelva a intentarlo mas tarde.")
+	var submessage = "Puede que se perdiera la conexion a internet";
+	submessage += "<br>o que el servicio de prediccion no este disponible.";
+	submessage += "<br>Vuelva a intentarlo mas tarde.";
+
+	dialog("No hay conexión con el servidor.", submesagge)
 };
 
 /*
