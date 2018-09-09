@@ -169,7 +169,7 @@ var onclose = function(){
 	submessage += "<br>o que el servicio de prediccion no este disponible.";
 	submessage += "<br>Vuelva a intentarlo mas tarde.";
 
-	dialog("No hay conexión con el servidor.", submesagge)
+	dialog("No hay conexión con el servidor.", submessage)
 };
 
 /*
