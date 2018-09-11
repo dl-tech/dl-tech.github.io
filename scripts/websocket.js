@@ -19,11 +19,11 @@ var onmessage = function(e) {
 	}
 	else if ( message[0] == "status" ) {
 
-		clearTimeout(predictorTimeout);
+        clearTimeout(predictorTimeout);
+        predictorStatus = message[1];
 
 		switch ( message[1] ) {
 
-			case "start":
 			case "ready":
 
 				reset();
@@ -35,12 +35,6 @@ var onmessage = function(e) {
 				load("Esperando que el predictor inicie...");
 				break;
 
-			case "canceled":
-
-				alert(dictionary.PREDICTOR_CANCELED_THE_REQUEST);
-				unload();
-				break;
-
 			case "preparing":
 
 				load(dictionary.PREDICTOR_IS_PREPARING_REQUEST);
@@ -49,11 +43,6 @@ var onmessage = function(e) {
 			case "procesing":
 
 				load(dictionary.PREDICTOR_IS_PROCESING_REQUEST);
-				break;
-
-			case "shutdown":
-
-				load(dictionary.WAITING_FOR_PREDICTOR_RECONECTION);
 				break;
 
 			default:
