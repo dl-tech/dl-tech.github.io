@@ -35,6 +35,11 @@ var onmessage = function(e) {
 				load("Esperando que el predictor inicie...");
 				break;
 
+			case "shutdown":
+
+				load("Reconectando con el predictor...");
+				break;
+
 			case "preparing":
 
 				load(dictionary.PREDICTOR_IS_PREPARING_REQUEST);

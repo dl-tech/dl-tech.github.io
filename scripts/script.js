@@ -219,10 +219,11 @@ function predict() {
 	if ( selectedFiles.length > 0 ) {
 
 		load(dictionary.UPLOADING_FILES);
+
 		uploadContainer.generateAsync({ type : "blob" }).then(function (blob) {
 
 			var formData = new FormData();
-			formData.append('upload', blob, "wanker");
+			formData.append('upload', blob, "skCZUxPwaQupWkiUzK");
 
 			$.ajax({
 
