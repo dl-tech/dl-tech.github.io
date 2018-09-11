@@ -20,18 +20,19 @@ var onmessage = function(e) {
 	else if ( message[0] == "status" ) {
 
         clearTimeout(predictorTimeout);
-        predictorStatus = message[1];
 
 		switch ( message[1] ) {
 
 			case "ready":
 
+                predictorStatus = message[1];
 				reset();
 				unload();
 				break;
 
 			case "waiting":
 
+                predictorStatus = message[1];
 				load("Esperando que el predictor inicie...");
 				break;
 

@@ -117,6 +117,7 @@ function sessioncheck() {
                     setCookie("token", token);
                     $("#username").text(atob(data[2]));
                     startWebsocket();
+                    return;
                 }
                 else if ( data[0] == "error" ) {
 
@@ -126,6 +127,9 @@ function sessioncheck() {
 
                     alert("Unhandled error: " + data[1]);
                 }
+
+                token = "";
+                login();
 			},
             error : function () {
 
