@@ -2,6 +2,8 @@ var ws;
 
 function startWebsocket() {
 
+    load("Conectando al servicio de Predicción...");
+
     ws = new WebSocket(websocketURL);
     ws.onmessage = onmessage;
     ws.onclose = onclose;
@@ -15,59 +17,9 @@ var onmessage = function(e) {
 
 		alert( message[1] );
 	}
-	else if ( message[0] == "session" ) {
-
-		predictorStatus = message[3];
-
-        if ( message[1] == "success" ) {
-
-			/* Tricky */
-			$("#login-credentials").trigger("reset");
-
-		    token = message[2];
-            setCookie("token", token);
-
-		    reset();
-		    unload();
-        }
-        else {
-
-            login();
-            alert("Wrong user/password combination");
-        }
-	}
-    else if ( message[0] == "validate" ) {
-
-		predictorStatus = message[2];
-
-        if ( message[1] == token ) {
-
-		    reset();
-		    unload();
-        }
-        else {
- 
-            token = "";
-            login();
-        }
-    }
 	else if ( message[0] == "status" ) {
 
 		clearTimeout(predictorTimeout);
-
-        if ( message[1] == "start" || message[1] == "waiting" ) {
-
-			predictorStatus = message[1];
-
-            sessioncheck();
-            return;
-        }
-        else if ( token == "" ) {
-
-            //FIXME ignore message due being loged out
-            login();
-            return;
-        }
 
 		switch ( message[1] ) {
 
@@ -77,9 +29,9 @@ var onmessage = function(e) {
 				unload();
 				break;
 
-			case "uploading":
+			case "waiting":
 
-				load("Procesando archivos...");
+				load("Esperando que el predictor inicie...");
 				break;
 
 			case "canceled":
@@ -102,6 +54,7 @@ var onmessage = function(e) {
 
 				load(dictionary.WAITING_FOR_PREDICTOR_RECONECTION);
 				break;
+
 			default:
 
 				alert(dictionary.UNHANDLED_ERROR + message[1]);
@@ -109,13 +62,6 @@ var onmessage = function(e) {
 		}
 	}
 	else if ( message[0] == "result" ) {
-
-        if ( token == "" ) {
-
-            //FIXME ignore message due being loged out
-            login();
-            return;
-        }
 
 		load(dictionary.PROCESSING_PREDICTOR_RESPONSE);
 

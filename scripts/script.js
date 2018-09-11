@@ -27,6 +27,8 @@ function login() {
 
 function logout() {
 
+    ws.close();
+
     token = "";
     setCookie("token", "");
 
@@ -63,7 +65,7 @@ function session() {
                     token = data[3] + "|" + data[1];
                     setCookie("token", token);
                     $("#username").text(atob(data[2]));
-                    unload();
+                    startWebsocket();
                 }
                 else if ( data[0] == "error" ) {
 
@@ -107,7 +109,7 @@ function sessioncheck() {
                     token = data[3] + "|" + data[1];
                     setCookie("token", token);
                     $("#username").text(atob(data[2]));
-                    unload();
+                    startWebsocket();
                 }
                 else if ( data[0] == "error" ) {
 
