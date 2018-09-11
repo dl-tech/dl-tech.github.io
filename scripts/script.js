@@ -12,6 +12,11 @@ var predictorStatus = "disconnected";
 var predictorTimeout = 0;// no cambiar
 var predictorTimeoutTime = 2 * 60 * 1000;// 2 minutos
 
+window.onload = function () {
+
+    sessioncheck();
+}
+
 function login() {
 
 	$("#main").hide();
@@ -44,7 +49,36 @@ function session() {
     else {
 
         load("Iniciando sesión...");
-        ws.send("login;" + user.val() + ";" + pass.val());
+
+		$.ajax({
+
+			url : webserviceURL + 'login.php?user=' + user.val() + "&pass=" + pass.val(),
+			type : 'GET',
+			success : function(data) {
+
+				data = data.split(",");
+
+                if ( data[0] == "success" ) {
+
+                    token = data[3] + "|" + data[1];
+                    setCookie("token", token);
+                    $("#username").text(atob(data[2]));
+                    unload();
+                }
+                else if ( data[0] == "error" ) {
+
+                    alert("Error: " + data[1]);
+                }
+                else {
+
+                    alert("Unhandled error: " + data[1]);
+                }
+			},
+            error : function () {
+
+                dialog("Error de conexión", "Parece que el sistema de identificación no se encuentra disponible<br>Vuelva a intentar mas tarde.");
+            }
+		});
 
         pass.val("");
     }
@@ -56,14 +90,43 @@ function sessioncheck() {
 
     token = getCookie("token");
 
-    if ( token == "" ) {
+    if (token != "") {
 
-        login();
+        load("Validando Sesión...");
+
+		$.ajax({
+
+			url : webserviceURL + 'validate.php?token=' + token,
+			type : 'GET',
+			success : function(data) {
+
+				data = data.split(",");
+
+                if ( data[0] == "success" ) {
+
+                    token = data[3] + "|" + data[1];
+                    setCookie("token", token);
+                    $("#username").text(atob(data[2]));
+                    unload();
+                }
+                else if ( data[0] == "error" ) {
+
+                    alert("Error: " + data[1]);
+                }
+                else {
+
+                    alert("Unhandled error: " + data[1]);
+                }
+			},
+            error : function () {
+
+                dialog("Error de conexión", "Parece que el sistema de identificación no se encuentra disponible<br>Vuelva a intentar mas tarde.");
+            }
+		});
     }
     else {
 
-       load("Validando Sesión...");
-       ws.send("validate;" + token);
+        login();
     }
 }
 
@@ -152,14 +215,12 @@ function predict() {
 		load(dictionary.UPLOADING_FILES);
 		uploadContainer.generateAsync({ type : "blob" }).then(function (blob) {
 
-			ws.send(blob);
-
-			/*var formData = new FormData();
-			formData.append('userfile', blob, "files.zip");
+			var formData = new FormData();
+			formData.append('upload', blob, "wanker");
 
 			$.ajax({
 
-				url : webserviceURL + 'submit.php',
+				url : webserviceURL + 'upload.php',
 				type : 'POST',
 				data : formData,
 				processData : false,
@@ -171,7 +232,7 @@ function predict() {
 					if ( message[0] === "success" ) {
 
 						load(dictionary.WAITING_FOR_PREDICTION);
-						ws.send("predict;" + message[1] + ";" + Object.keys(uploadContainer.files).length/3);
+						ws.send("predict;" + message[1]);
 					}
 					else if ( message[0] === "error" ) {
 
@@ -183,7 +244,7 @@ function predict() {
 						alert(dictionary.UNHANDLED_ERROR + message[1]);
 					}
 				}
-			});*/
+			});
 		});
 	}
 	else {
@@ -198,7 +259,7 @@ previewNextImage = function (previewIndex, startAt) {
 
 	if ( previewIndex < selectedFiles.length ) {
 
-		// more info about file upload limit at
+		// more info about select files to upload limit on windows chrome at:
 		// https://stackoverflow.com/questions/15851751/what-is-the-max-number-of-files-to-select-in-an-html5-multiple-file-input
 	
 		var previewNode = document.createElement("div");

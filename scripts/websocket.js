@@ -1,7 +1,13 @@
+var ws;
 
-var ws = new WebSocket(websocketURL);
+function startWebsocket() {
 
-ws.onmessage = function(e) {
+    ws = new WebSocket(websocketURL);
+    ws.onmessage = onmessage;
+    ws.onclose = onclose;
+};
+
+var onmessage = function(e) {
 
 	var message = e.data.split(";");
 
@@ -167,7 +173,7 @@ ws.onmessage = function(e) {
 	}
 };
 
-ws.onclose = function(){
+var onclose = function(){
 
 	var submessage = "Puede que se perdiera la conexion a internet";
 	submessage += "<br>o que el servicio de prediccion no este disponible.";

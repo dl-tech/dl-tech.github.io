@@ -42,6 +42,13 @@ body {
     text-align: right;
 }
 
+#navbar #username {
+
+    color: white;
+    display: inline-block;
+    padding: 5px;
+}
+
 #navbar button {
 
     display: inline-block;
