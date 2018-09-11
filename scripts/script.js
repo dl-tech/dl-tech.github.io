@@ -74,6 +74,9 @@ function session() {
                 else if ( data[0] == "error" ) {
 
                     alert("Error: " + data[1]);
+                    token = "";
+                    setCookie("token", token);
+                    login();
                 }
                 else {
 
