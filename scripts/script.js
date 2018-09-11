@@ -278,6 +278,7 @@ previewNextImage = function (previewIndex, startAt) {
 		previewNode.appendChild(document.createElement("div"));
 		previewNode.lastChild.appendChild(document.createElement("span"));
 		previewNode.lastChild.appendChild(document.createElement("span"));
+		previewNode.lastChild.appendChild(document.createElement("span"));
 
 		var gallery = document.getElementById("gallery");
 
@@ -301,7 +302,8 @@ previewNextImage = function (previewIndex, startAt) {
             }
 			n.firstChild.setAttribute("src", e.target.result);
 			n.lastChild.firstChild.innerHTML = selectedFiles[previewIndex].name;
-			n.lastChild.lastChild.setAttribute("id", "status-" + (alreadyRequested+previewIndex));
+			n.lastChild.firstChild.nextSibling.setAttribute("id", "status-" + (alreadyRequested+previewIndex));
+			n.lastChild.lastChild.setAttribute("id", "clase-" + (alreadyRequested+previewIndex));
 
 			gallery.appendChild(n);
 		}

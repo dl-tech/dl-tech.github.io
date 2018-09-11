@@ -82,6 +82,9 @@ var onmessage = function(e) {
 			index = parseInt(status[0])
 			value = parseFloat(status[1]);
 
+			clase = $("#clase-" + (previousCount+index));
+            clase.text( status[2] );
+
 			status = $("#status-" + (previousCount+index));
 			status.text(Math.floor(value*1000)/1000 + "%")
 
