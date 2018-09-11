@@ -23,6 +23,7 @@ var onmessage = function(e) {
 
 		switch ( message[1] ) {
 
+			case "start":
 			case "ready":
 
 				reset();

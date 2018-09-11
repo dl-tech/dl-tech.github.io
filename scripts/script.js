@@ -27,12 +27,16 @@ function login() {
 
 function logout() {
 
+    load("Cerrando sesión");
+
+    ws.onclose = function () {
+
+        token = "";
+        setCookie("token", "");
+
+        login();
+    }
     ws.close();
-
-    token = "";
-    setCookie("token", "");
-
-    login();
 }
 
 function session() {
