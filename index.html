@@ -75,16 +75,21 @@
 
 	<div id="process" style="display:none;">
 
-		<div id="upload-message" class="load-message">Conectando...</div>
+	    <div class="valign"></div>
 
-		<br>
+	    <div class="venter">
 
-		<div class="progress">
-			<span id="progress-val">0%</span>
-			<span id="progress-bar">
-				<span id="progress-in" style="width: 0%"></span>
-			</span>
-		</div>
+		    <div id="upload-message" class="load-message">Conectando...</div>
+
+		    <br>
+
+		    <div class="progress">
+			    <span id="progress-val">0%</span>
+			    <span id="progress-bar">
+				    <span id="progress-in" style="width: 0%"></span>
+			    </span>
+		    </div>
+	    </div>
 
 	</div>
 
@@ -106,16 +111,7 @@
 					<span class="count-value" id="count-total">0</span>
 				</div>
 
-				<br>
-				<div>
-					<span class="count-name">Reactivos:</span>
-					<span class="count-value" id="count-reactivo">0</span>
-				</div>
-
-				<div>
-					<span class="count-name">No Reactivos:</span>
-					<span class="count-value" id="count-noreactivo">0</span>
-				</div>
+				<div id="etiquetas"></div>
 
 			</div>
 
@@ -123,9 +119,9 @@
 
 				<button>Agregar imagenes</button>
 				<form id="star-platinum">
-					<input type="file" name="files[]" id="file" onchange="kiwi(this)" multiple accept="image/jpg, image/png, image/jpeg" />
+					<input type="file" name="files[]" id="file" onchange="selectFilesFrom(this)" multiple accept="image/jpg, image/png, image/jpeg" />
 				</form>
-				<button id="button-reset" onclick="reset()">Quitar todo</button>
+				<button id="button-reset" onclick="resetContent()">Quitar todo</button>
 				<br>
 				<button id="button-predict" onclick="predict()">Obtener Prediccion</button>
 			</div>
@@ -148,7 +144,11 @@
 	<script src="scripts/util.js"></script>
 	<script src="scripts/dictionary.js"></script>
 	<script src="scripts/config.js"></script>
-	<script src="scripts/script.js"></script>
+	<script src="scripts/session.js"></script>
+	<script src="scripts/interface.js"></script>
 	<script src="scripts/websocket.js"></script>
+	<script src="scripts/preview.js"></script>
+	<script src="scripts/script.js"></script>
+	<script src="scripts/start.js"></script>
 	
 </body></html>

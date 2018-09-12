@@ -1,8 +1,9 @@
 var ws;
+var registredLabels;
 
 function startWebsocket() {
 
-    load("Conectando al servicio de Predicción...");
+    displayLoadingMessage(dictionary.CONNECTING_TO_PREDICTION_SERVICE);
 
     ws = new WebSocket(websocketURL);
     ws.onmessage = onmessage;
@@ -12,6 +13,8 @@ function startWebsocket() {
 var onmessage = function(e) {
 
 	var message = e.data.split(";");
+
+    registredLabels = {};
 
 	if ( message[0] == "alert" ) {
 
@@ -26,40 +29,47 @@ var onmessage = function(e) {
 			case "ready":
 
                 predictorStatus = message[1];
-				reset();
-				unload();
+				resetContent();
+				displayContent();
 				break;
 
 			case "waiting":
 
                 predictorStatus = message[1];
-				load("Esperando que el predictor inicie...");
+				displayLoadingMessage(dictionary.WAITING_FOR_PREDICTOR_TO_BE_READY);
 				break;
 
 			case "shutdown":
 
-				load("Reconectando con el predictor...");
+				displayLoadingMessage(dictionary.TRYING_TO_RECONNECT);
+				break;
+
+			case "canceled":
+
+                alert(dictionary.PREDICTOR_CANCELED_REQUEST);
+				resetContent();
+				displayContent();
 				break;
 
 			case "preparing":
 
-				load(dictionary.PREDICTOR_IS_PREPARING_REQUEST);
+				displayLoadingMessage(dictionary.PREDICTOR_IS_PREPARING_REQUEST);
 				break;
 
 			case "procesing":
 
-				load(dictionary.PREDICTOR_IS_PROCESING_REQUEST);
+				displayLoadingMessage(dictionary.PREDICTOR_IS_PROCESING_REQUEST);
 				break;
 
 			default:
 
 				alert(dictionary.UNHANDLED_ERROR + message[1]);
-				load(dictionary.LOADING);
+				displayLoadingMessage(dictionary.LOADING);
 		}
 	}
 	else if ( message[0] == "result" ) {
 
-		load(dictionary.PROCESSING_PREDICTOR_RESPONSE);
+		displayLoadingMessage(dictionary.PROCESSING_PREDICTOR_RESPONSE);
 
 		var index;
 		var value;
@@ -86,6 +96,15 @@ var onmessage = function(e) {
 			clase = $("#clase-" + (previousCount+index));
             clase.text( status[2] );
 
+            if ( registredLabels[ status[2] ] ) {
+
+                registredLabels[ status[2] ]++;
+            }
+            else {
+
+                registredLabels[ status[2] ] = 1;
+            }
+
 			status = $("#status-" + (previousCount+index));
 			status.text(Math.floor(value*1000)/1000 + "%")
 
@@ -102,27 +121,35 @@ var onmessage = function(e) {
 				status.css("background-color", "orange");
 			}
 			else {
-				totalReactivos++;
 				status.css("background-color", "green");
 			}
 		}
 
-		$("#count-reactivo").text(totalReactivos);
-		$("#count-noreactivo").text(alreadyRequested-totalReactivos);
+        //TODO soporte para multiples clases
 
-		unload();
+        var etiquetas = $("#etiquetas");
+
+        etiquetas.empty();
+
+        var div;
+
+        for (var key in registredLabels) {
+
+            div = $("<div></div>").appendTo(etiquetas);
+
+            $("<span class=\"count-name\">" + key + ":</span>").appendTo(div);
+		    $("<span class=\"count-value\">" + registredLabels[key] + "</span>").appendTo(div);
+        }
+
+		displayContent();
 	}
 	else {
-		//FIXME
+
 		console.log("A message was received but it was ignored: " + message);
 	}
 };
 
 var onclose = function(){
 
-	var submessage = "Puede que se perdiera la conexion a internet";
-	submessage += "<br>o que el servicio de prediccion no este disponible.";
-	submessage += "<br>Vuelva a intentarlo mas tarde.";
-
-	dialog("No hay conexión con el servidor.", submessage)
+	displayDialogMessage(dictionary.NO_CONNECTION_TITLE, dictionary.NO_CONNECTION_MESSAGE)
 };

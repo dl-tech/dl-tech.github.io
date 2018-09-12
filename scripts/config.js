@@ -1,6 +1,6 @@
 
-var websocketURL = "ws://10.240.22.94:9091";
-var webserviceURL = "http://10.240.22.94/dltech-webservice/";
+var websocketURL = "ws://10.10.10.20:9091";
+var webserviceURL = "http://10.10.10.20/dltech-webservice/";
 
 /*if ( location.protocol == "https:" ) {
 
