@@ -14,8 +14,6 @@ var onmessage = function(e) {
 
 	var message = e.data.split(";");
 
-    registredLabels = {};
-
 	if ( message[0] == "alert" ) {
 
 		alert( message[1] );
@@ -76,13 +74,6 @@ var onmessage = function(e) {
 		var status;
 		var resultados = message[1].split(",");
 
-		selectedFiles = new Array();
-		uploadContainer = new JSZip();
-
-		var previousCount = alreadyRequested;
-
-		alreadyRequested += resultados.length;
-
 		$("#count-new").text(0);
 		$("#count-total").text(alreadyRequested);
 
@@ -93,7 +84,7 @@ var onmessage = function(e) {
 			index = parseInt(status[0])
 			value = parseFloat(status[1]);
 
-			clase = $("#clase-" + (previousCount+index));
+			clase = $("#clase-" + (index));
             clase.text( status[2] );
 
             if ( registredLabels[ status[2] ] ) {
@@ -105,27 +96,34 @@ var onmessage = function(e) {
                 registredLabels[ status[2] ] = 1;
             }
 
-			status = $("#status-" + (previousCount+index));
+			status = $("#status-" + (index));
 			status.text(Math.floor(value*1000)/1000 + "%")
 
-			if ( value < 25 ) {
+			if ( value < 20 ) {
 
-				status.css("background-color", "red");
+				status.parent().parent().css("background-color", "#27b937b2");
+			}
+			else if ( value < 40 ) {
+
+				status.parent().parent().css("background-color", "#40ba00b2");
 			}
 			else if ( value < 50 ) {
 
-				status.css("background-color", "orangered");
+				status.parent().parent().css("background-color", "#cbf874b2");
 			}
 			else if ( value < 80 ) {
 
-				status.css("background-color", "orange");
+				status.parent().parent().css("background-color", "#ff410bb2");
 			}
 			else {
-				status.css("background-color", "green");
+
+				status.parent().parent().css("background-color", "#ff0000b2");
 			}
 		}
 
-        //TODO soporte para multiples clases
+        counterstrike = 0;
+		uploadContainer = new JSZip();
+        alreadyRequested += resultados.length;
 
         var etiquetas = $("#etiquetas");
 

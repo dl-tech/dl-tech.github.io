@@ -68,28 +68,35 @@
 
 	<div id="navbar">
 
-        <div id="username">Username</div>
-		<button onclick="logout();">Log out</button>
+		<div class="rogue"></div>
+
+		<div class="interaction">
+
+			<div id="userpicture"></div>
+			<div id="username">Username</div>
+
+		 	<div class="exit" alt="Cerrar Sesión" title="Cerrar Sesión" onclick="logout();"></div>
+		</div>
 
 	</div>
 
 	<div id="process" style="display:none;">
 
-	    <div class="valign"></div>
+	 <div class="valign"></div>
 
-	    <div class="venter">
+	 <div class="venter">
 
-		    <div id="upload-message" class="load-message">Conectando...</div>
+		 <div id="upload-message" class="load-message">Conectando...</div>
 
-		    <br>
+		 <br>
 
-		    <div class="progress">
-			    <span id="progress-val">0%</span>
-			    <span id="progress-bar">
-				    <span id="progress-in" style="width: 0%"></span>
-			    </span>
-		    </div>
-	    </div>
+		 <div class="progress">
+			 <span id="progress-val">0%</span>
+			 <span id="progress-bar">
+				 <span id="progress-in" style="width: 0%"></span>
+			 </span>
+		 </div>
+	 </div>
 
 	</div>
 

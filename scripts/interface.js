@@ -1,5 +1,35 @@
 var counterstrike;
 var lastpull;
+var current;
+
+function createDialogBox(node) {
+
+    current = document.createElement("div");
+    current.setAttribute("class", "boxing");
+
+    current.onclick = function (e) {
+
+        e.stopPropagation();
+
+        current = null;
+
+        window.left = null;
+        window.right = null;
+
+        this.parentNode.removeChild(this);
+    };
+
+    current.appendChild( document.createElement("div") );
+    current.lastChild.setAttribute("class", "valign");
+
+    current.appendChild( document.createElement("div") );
+    current.lastChild.setAttribute("class", "venter");
+    current.lastChild.style.backgroundColor = "white";
+    current.lastChild.appendChild(node);
+
+    document.body.appendChild(current);
+
+}
 
 function selectFilesFrom(input) {
 
@@ -10,10 +40,10 @@ function selectFilesFrom(input) {
 
 	displayLoadingMessage(dictionary.LOADING);
 
-	$("#count-new").text(input.files.length);
+	$("#count-new").text(counterstrike + lastpull.length);
 	$("#count-total").text(alreadyRequested);
 
-	previewNextImage( counterstrike, counterstrike );
+	previewNextImage(0);
 }
 
 function setUserName(username) {
@@ -82,6 +112,7 @@ function resetContent() {
 	uploadContainer = new JSZip();
 	alreadyRequested = 0;
     counterstrike = 0;
+    registredLabels = {};
 
 	$("#count-new").text(0);
 	$("#count-total").text(0);
