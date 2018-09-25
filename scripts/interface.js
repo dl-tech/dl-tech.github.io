@@ -23,9 +23,18 @@ function createDialogBox(node) {
     current.lastChild.setAttribute("class", "valign");
 
     current.appendChild( document.createElement("div") );
+    current.lastChild.setAttribute("class", "arrow left");
+    current.lastChild.onclick = moveLeft;
+
+    current.appendChild( document.createElement("div") );
     current.lastChild.setAttribute("class", "venter");
+
     current.lastChild.style.backgroundColor = "white";
     current.lastChild.appendChild(node);
+
+    current.appendChild( document.createElement("div") );
+    current.lastChild.setAttribute("class", "arrow right");
+    current.lastChild.onclick = moveRight;
 
     document.body.appendChild(current);
 

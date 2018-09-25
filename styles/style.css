@@ -22,6 +22,38 @@ body {
     margin-top: 5px;
 }
 
+.arrow {
+
+    height: 180px;
+    width: 180px;
+
+    display: inline-block;
+    vertical-align: middle;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% auto;
+
+    opacity: 0.4;
+
+    cursor: pointer;
+}
+
+.arrow:hover {
+
+    opacity: 1;
+}
+
+.arrow.left {
+
+    background-image: url("../images/left-arrow.png");
+}
+
+.arrow.right {
+
+    background-image: url("../images/right-arrow.png");
+}
+
 .valign {
 
 	width: 0px;

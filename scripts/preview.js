@@ -4,11 +4,9 @@ var current = null;
 var left = null;
 var right = null;
 
-window.onkeypress = function (e) {
+var moveLeft = function (e) {
 
-    if ( current != null ) {
-
-        if ( e.keyCode === 37 ) {
+    e.stopPropagation();
 
             if ( left === null ) {
 
@@ -22,8 +20,11 @@ window.onkeypress = function (e) {
                 current.onclick(e);
                 previousLeft.onclick(e);
             }
-        }
-        else if ( e.keyCode === 39 ) {
+}
+
+var moveRight = function (e) {
+
+    e.stopPropagation();
 
             if ( right === null ) {
 
@@ -37,6 +38,19 @@ window.onkeypress = function (e) {
                 current.onclick(e);
                 previousRight.onclick(e);
             }
+}
+
+window.onkeypress = function (e) {
+
+    if ( current != null ) {
+
+        if ( e.keyCode === 37 ) {
+
+            moveLeft(e);
+        }
+        else if ( e.keyCode === 39 ) {
+
+            moveRight(e);
         }
     }
     else {
